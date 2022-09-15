@@ -35,7 +35,18 @@ $routes->set404Override();
 
 // We get a performance increase by specifying the default
 // route since we don't have to scan directories.
+
+// Untuk Front End Site
 $routes->get('/', 'Home::index');
+
+// Untuk Back End Site
+
+// Login, Dashboard, Logout
+$routes->get('/login', 'Auth::index');
+$routes->post('/logining', 'Auth::login');
+$routes->get('/logout', 'Auth::logout');
+$routes->get('/admin', 'Dashboard::index');
+
 
 /*
  * --------------------------------------------------------------------
