@@ -60,7 +60,7 @@ $login = $db->table('user')->getWhere(['username' => session()->get('username')]
                 foreach ($submenu as $s) :
                 ?>
                     <!-- Nav Item - Dashboard -->
-                    <li class="nav-item">
+                    <li class="nav-item <?= ($s->submenu == $active) ? 'active' : null; ?>">
                         <a class="nav-link" href="<?= $s->routes; ?>">
                             <i class="<?= $s->icon; ?>"></i>
                             <span><?= $s->submenu; ?></span></a>
