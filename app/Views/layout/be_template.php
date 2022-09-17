@@ -1,3 +1,6 @@
+<?php
+$db = \config\Database::connect();
+?>
 <!DOCTYPE html>
 <html lang="en">
 
