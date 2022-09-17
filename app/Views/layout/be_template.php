@@ -12,7 +12,7 @@ $db = \config\Database::connect();
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>SB Admin 2 - Blank</title>
+    <title>Motion Force | Admin Site</title>
 
     <!-- Custom fonts for this template-->
     <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -36,7 +36,7 @@ $db = \config\Database::connect();
                 <div class="sidebar-brand-icon rotate-n-15">
                     <i class="fas fa-laugh-wink"></i>
                 </div>
-                <div class="sidebar-brand-text mx-3">SB Admin <sup>2</sup></div>
+                <div class="sidebar-brand-text mx-3">Motion <sup>Force</sup></div>
             </a>
 
             <!-- Divider -->
@@ -339,7 +339,7 @@ $db = \config\Database::connect();
                 <div class="container-fluid">
 
                     <!-- Page Heading -->
-                    <h1 class="h3 mb-4 text-gray-800">Blank Page</h1>
+                    <h1 class="h3 mb-4 text-gray-800"><?= $title; ?></h1>
 
                     <?= $this->renderSection('content'); ?>
 
