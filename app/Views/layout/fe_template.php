@@ -8,7 +8,7 @@ $db = \config\Database::connect();
 <head>
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
-    <title>HeroBiz Bootstrap Template - Home 1</title>
+    <title>Motion Force</title>
     <meta name="robots" content="noindex, nofollow">
     <meta content="" name="description">
     <meta content="" name="keywords">
@@ -52,9 +52,9 @@ $db = \config\Database::connect();
                         </ul>
                     </li>
                     <li><a class="nav-link scrollto" href="#about">About</a></li>
-                    <li><a class="nav-link scrollto" href="index.html#services">Services</a></li>
-                    <li><a class="nav-link scrollto" href="index.html#portfolio">Portfolio</a></li>
-                    <!-- <li><a class="nav-link scrollto" href="index.html#team">Team</a></li> -->
+                    <li><a class="nav-link scrollto" href="#services">Services</a></li>
+                    <li><a class="nav-link scrollto" href="#portfolio">Portfolio</a></li>
+                    <!-- <li><a class="nav-link scrollto" href="#team">Team</a></li> -->
                     <li><a href="blog.html">Blog</a></li>
                     <li class="dropdown"><a href="#"><span>Drop Down</span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
                         <ul>

@@ -47,7 +47,7 @@
                                             </div>
                                         <?php endif; ?>
                                         <div class="form-group">
-                                            <input type="text" class="form-control form-control-user" id="username" aria-describedby="emailHelp" placeholder="Username" name="username">
+                                            <input type="text" class="form-control form-control-user" id="username" aria-describedby="emailHelp" placeholder="Username" name="username" autofocus>
                                         </div>
                                         <div class="form-group">
                                             <input type="password" class="form-control form-control-user" id="password" placeholder="Password" name="password">
