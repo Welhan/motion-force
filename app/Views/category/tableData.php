@@ -8,10 +8,10 @@
 
 <table class="table table-bordered table-hover" id="datatable">
     <thead class="thead-light text-center">
-        <th>#</th>
+        <th width="50px">#</th>
         <th>Category</th>
         <th>Status</th>
-        <th>Action</th>
+        <th width="100px">Action</th>
     </thead>
     <tbody class="text-center align-middle">
         <?php
@@ -21,7 +21,7 @@
                 <td><?= $no++; ?></td>
                 <td><?= $category->category; ?></td>
                 <td>
-                    <button class="btn" role="button" onclick=""><span class="badge badge-pill <?= ($category->active == 1) ? "badge-primary" : "badge-danger"; ?> "><?= ($category->active) ? "Active" : "Not Active"; ?></span></button>
+                    <button class="btn" role="button" onclick="updateStatus(<?= $category->id; ?>)"><span class="badge badge-pill <?= ($category->active == 1) ? "badge-primary" : "badge-danger"; ?> "><?= ($category->active) ? "Active" : "Not Active"; ?></span></button>
                 </td>
                 <td>
                     <button class="btn btn-sm btn-info"><i class="fas fa-eye"></i></button>
@@ -58,6 +58,54 @@
                 } else {
                     $('#viewModal').html(response.data).show();
                     $('#modal-edit').modal('show');
+                }
+            },
+            error: function(xhr, ajaxOptions, thrownError) {
+                alert(xhr.status + "\n" + xhr.responseText + "\n" + thrownError);
+            }
+        })
+    }
+
+    function deleteCategory(id) {
+        $.ajax({
+            type: 'POST',
+            url: '/Category/getFormDelete',
+            data: {
+                id: id
+            },
+            dataType: 'json',
+            success: function(response) {
+                if (response.error) {
+                    if (response.error.logout) {
+                        window.location.href = response.error.logout
+                    }
+                } else {
+                    $('#viewModal').html(response.data).show();
+                    $('#modal-delete').modal('show');
+                }
+            },
+            error: function(xhr, ajaxOptions, thrownError) {
+                alert(xhr.status + "\n" + xhr.responseText + "\n" + thrownError);
+            }
+        })
+    }
+
+    function updateStatus(id) {
+        // console.log('OK')
+        $.ajax({
+            type: 'POST',
+            url: '/Category/updateStatus',
+            data: {
+                id: id
+            },
+            dataType: 'json',
+            success: function(response) {
+                if (response.error) {
+                    if (response.error.logout) {
+                        window.location.href = response.error.logout
+                    }
+                } else {
+                    getDataCategory();
                 }
             },
             error: function(xhr, ajaxOptions, thrownError) {

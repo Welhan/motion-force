@@ -263,4 +263,126 @@ class Category extends BaseController
             return redirect()->to(base_url('category'));
         }
     }
+
+    public function getFormDelete()
+    {
+        if ($this->request->isAJAX()) {
+
+            // Verify if user already Login
+            if (!check_login()) {
+                $msg = [
+                    'error' => ['logout' => base_url('logout')]
+                ];
+                echo json_encode($msg);
+                return;
+            }
+
+            $id = $this->request->getPost('id');
+            $category = $this->categoryModel->find($id);
+
+            $data = [
+                'category' => $category
+            ];
+
+            $msg = [
+                'data' => view('category/modals/deleteModal', $data)
+            ];
+
+            echo json_encode($msg);
+        } else {
+            return redirect()->to(base_url('category'));
+        }
+    }
+
+    public function deleteCategory()
+    {
+        if ($this->request->isAJAX()) {
+
+            // Verify if user already Login
+            if (!check_login()) {
+                $msg = [
+                    'error' => ['logout' => base_url('logout')]
+                ];
+                echo json_encode($msg);
+                return;
+            }
+
+            $id = $this->request->getPost('id');
+
+            try {
+                if ($this->categoryModel->where('id', $id)->delete()) {
+                    $alert = [
+                        'message' => "Category Deleted",
+                        'alert' => 'alert-success'
+                    ];
+
+                    $msg = ['Success' => 'Deleted'];
+                }
+            } catch (Exception $e) {
+                $alert = [
+                    'message' => "Category Not Deleted<br> " . $e->getMessage(),
+                    'alert' => 'alert-danger'
+                ];
+                $msg = ['Failed' => 'Process Failed'];
+            } finally {
+                session()->setFlashdata($alert);
+                echo json_encode($msg);
+            }
+        } else {
+            return redirect()->to(base_url('category'));
+        }
+    }
+
+    public function updateStatus()
+    {
+        if ($this->request->isAJAX()) {
+            // Verify if user already Login
+            if (!check_login()) {
+                $msg = [
+                    'error' => ['logout' => base_url('logout')]
+                ];
+                echo json_encode($msg);
+                return;
+            }
+
+            $id = $this->request->getPost('id');
+
+            $category = $this->categoryModel->find($id);
+
+            if ($category->active == 0) {
+                $active = 1;
+            } else {
+                $active = 0;
+            }
+
+            $data = [
+                'id' => $id,
+                'active' => $active,
+                'user_update' => session('username'),
+                'date_update' => date('Y-m-d h:i:s')
+            ];
+
+            try {
+                if ($this->categoryModel->save($data)) {
+                    $alert = [
+                        'message' => "Status Updated",
+                        'alert' => 'alert-success'
+                    ];
+                    $msg = ['success' => 'Process Success'];
+                }
+            } catch (Exception $e) {
+                $alert = [
+                    'message' => "Status Not Updated",
+                    'alert' => 'alert-danger'
+                ];
+                $msg = ['error' => 'Process Terminated'];
+            } finally {
+                session()->setFlashdata($alert);
+
+                echo json_encode($msg);
+            }
+        } else {
+            return redirect()->to(base_url('category'));
+        }
+    }
 }
