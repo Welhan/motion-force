@@ -1,5 +1,6 @@
 <?php
 $db = \config\Database::connect();
+$categorys = $db->query('SELECT * FROM category WHERE active = 1 and ID IN(SELECT categoryID FROM product where active=1)');
 ?>
 
 <!DOCTYPE html>
@@ -33,11 +34,9 @@ $db = \config\Database::connect();
             </a>
             <nav id="navbar" class="navbar">
                 <ul>
-                    <li class="dropdown megamenu"><a href="#"><span>Products</span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
+                    <li class="dropdown <?= (count($categorys->getResult()) > 1) ? 'megamenu' : ''; ?> "><a href="#"><span>Products</span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
                         <ul>
                             <?php
-                            $categorys = $db->query('SELECT * FROM category WHERE active = 1 and ID IN(SELECT categoryID FROM product where active=1)');
-
                             foreach ($categorys->getResult() as $category) :
                             ?>
                                 <li> <a href="#"><b><?= $category->category; ?></b></a>
@@ -76,6 +75,7 @@ $db = \config\Database::connect();
                     <li><a class="nav-link scrollto" href="index.html#contact">Contact</a></li>
                 </ul> <i class="bi bi-list mobile-nav-toggle d-none"></i>
             </nav>
+            <div class="scrollto" href="index.html#about"></div>
         </div>
     </header>
     <section id="hero-animated" class="hero-animated d-flex align-items-center">
