@@ -9,7 +9,7 @@
             <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
                 <h6 class="m-0 font-weight-bold text-primary">Category List</h6>
                 <div class="dropdown no-arrow">
-                    <a class="dropdown-toggle" role="button" id="btnNew">
+                    <a class="dropdown-toggle btn btn-primary btn-sm" role="button" id="btnNew">
                         <i class="fas fa-plus fa-sm fa-fw text-gray-400"></i>
                     </a>
                 </div>

@@ -290,7 +290,7 @@ $menu = generate_menu();
             <footer class="sticky-footer bg-white">
                 <div class="container my-auto">
                     <div class="copyright text-center my-auto">
-                        <span>Copyright &copy; Your Website 2020</span>
+                        <span>Copyright &copy; <b>Motion Force</b> | <?= date('Y'); ?></span>
                     </div>
                 </div>
             </footer>
