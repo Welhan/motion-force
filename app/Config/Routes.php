@@ -49,6 +49,9 @@ $routes->get('/admin', 'Dashboard::index');
 
 // Category
 $routes->get('/category', 'Category::index');
+$routes->post('/saveCategory', 'Category::newCategory');
+$routes->post('/updateCategory', 'Category::updateCategory');
+$routes->post('/deleteCategory', 'Category::deleteCategory');
 
 
 

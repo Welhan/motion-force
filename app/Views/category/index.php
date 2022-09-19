@@ -33,6 +33,8 @@
     </div>
 </div>
 
+<div id="viewModal" style="display: none;"></div>
+
 <?= $this->endSection(); ?>
 
 <?= $this->section('javascript'); ?>
