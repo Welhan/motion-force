@@ -16,18 +16,17 @@
             </div>
             <!-- Card Body -->
             <div class="card-body">
-                <div class="table-responsive">
 
-                    <div id="loader" class="mx-auto" style="width: 200px; display: none;">
-                        <button class=" btn btn-primary" type="button" disabled>
-                            <span class="spinner-grow spinner-grow-sm" role="status" aria-hidden="true"></span>
-                            Loading...
-                        </button>
-                    </div>
 
-                    <div id="tableData"></div>
-
+                <div id="loader" class="mx-auto" style="width: 200px; display: none;">
+                    <button class=" btn btn-primary" type="button" disabled>
+                        <span class="spinner-grow spinner-grow-sm" role="status" aria-hidden="true"></span>
+                        Loading...
+                    </button>
                 </div>
+
+                <div id="tableData"></div>
+
             </div>
         </div>
     </div>

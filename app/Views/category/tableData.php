@@ -6,32 +6,35 @@
     </div>
 <?php endif; ?>
 
-<table class="table table-bordered table-hover" id="datatable">
-    <thead class="thead-light text-center">
-        <th width="50px">#</th>
-        <th>Category</th>
-        <th>Status</th>
-        <th width="100px">Action</th>
-    </thead>
-    <tbody class="text-center align-middle">
-        <?php
-        $no = 1;
-        foreach ($categorys as $category) : ?>
-            <tr>
-                <td><?= $no++; ?></td>
-                <td><?= $category->category; ?></td>
-                <td>
-                    <button class="btn" role="button" onclick="updateStatus(<?= $category->id; ?>)"><span class="badge badge-pill <?= ($category->active == 1) ? "badge-success" : "badge-danger"; ?> "><?= ($category->active) ? "Active" : "Not Active"; ?></span></button>
-                </td>
-                <td>
-                    <!-- <button class="btn btn-sm btn-info"><i class="fas fa-eye"></i></button> -->
-                    <button class="btn btn-sm btn-warning" role="button" onclick="editCategory(<?= $category->id; ?>)"><i class="fas fa-pencil-alt"></i></button>
-                    <button class="btn btn-sm btn-danger" role="button" onclick="deleteCategory(<?= $category->id; ?>)"><i class="fas fa-trash"></i></button>
-                </td>
-            </tr>
-        <?php endforeach; ?>
-    </tbody>
-</table>
+<div class="table-responsive">
+
+    <table class="table table-bordered table-hover" id="datatable">
+        <thead class="thead-light text-center">
+            <th width="50px">#</th>
+            <th>Category</th>
+            <th>Status</th>
+            <th width="100px">Action</th>
+        </thead>
+        <tbody class="text-center align-middle">
+            <?php
+            $no = 1;
+            foreach ($categorys as $category) : ?>
+                <tr>
+                    <td><?= $no++; ?></td>
+                    <td><?= $category->category; ?></td>
+                    <td>
+                        <button class="btn" role="button" onclick="updateStatus(<?= $category->id; ?>)"><span class="badge badge-pill <?= ($category->active == 1) ? "badge-success" : "badge-danger"; ?> "><?= ($category->active) ? "Active" : "Not Active"; ?></span></button>
+                    </td>
+                    <td>
+                        <!-- <button class="btn btn-sm btn-info"><i class="fas fa-eye"></i></button> -->
+                        <button class="btn btn-sm btn-warning" role="button" onclick="editCategory(<?= $category->id; ?>)"><i class="fas fa-pencil-alt"></i></button>
+                        <button class="btn btn-sm btn-danger" role="button" onclick="deleteCategory(<?= $category->id; ?>)"><i class="fas fa-trash"></i></button>
+                    </td>
+                </tr>
+            <?php endforeach; ?>
+        </tbody>
+    </table>
+</div>
 
 <script>
     $('#datatable').DataTable()

@@ -365,14 +365,14 @@ class Category extends BaseController
             try {
                 if ($this->categoryModel->save($data)) {
                     $alert = [
-                        'message' => "Status Updated",
+                        'message' => "<b>Category $category->category's</b> Status Updated",
                         'alert' => 'alert-success'
                     ];
                     $msg = ['success' => 'Process Success'];
                 }
             } catch (Exception $e) {
                 $alert = [
-                    'message' => "Status Not Updated",
+                    'message' => "<b>Category $category->category's</b> Status Not Updated",
                     'alert' => 'alert-danger'
                 ];
                 $msg = ['error' => 'Process Terminated'];
