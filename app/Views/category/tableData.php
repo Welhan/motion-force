@@ -21,10 +21,10 @@
                 <td><?= $no++; ?></td>
                 <td><?= $category->category; ?></td>
                 <td>
-                    <button class="btn" role="button" onclick="updateStatus(<?= $category->id; ?>)"><span class="badge badge-pill <?= ($category->active == 1) ? "badge-primary" : "badge-danger"; ?> "><?= ($category->active) ? "Active" : "Not Active"; ?></span></button>
+                    <button class="btn" role="button" onclick="updateStatus(<?= $category->id; ?>)"><span class="badge badge-pill <?= ($category->active == 1) ? "badge-success" : "badge-danger"; ?> "><?= ($category->active) ? "Active" : "Not Active"; ?></span></button>
                 </td>
                 <td>
-                    <button class="btn btn-sm btn-info"><i class="fas fa-eye"></i></button>
+                    <!-- <button class="btn btn-sm btn-info"><i class="fas fa-eye"></i></button> -->
                     <button class="btn btn-sm btn-warning" role="button" onclick="editCategory(<?= $category->id; ?>)"><i class="fas fa-pencil-alt"></i></button>
                     <button class="btn btn-sm btn-danger" role="button" onclick="deleteCategory(<?= $category->id; ?>)"><i class="fas fa-trash"></i></button>
                 </td>
