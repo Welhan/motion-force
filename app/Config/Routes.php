@@ -53,6 +53,14 @@ $routes->post('/saveCategory', 'Category::newCategory');
 $routes->post('/updateCategory', 'Category::updateCategory');
 $routes->post('/deleteCategory', 'Category::deleteCategory');
 
+// Product Menu
+$routes->get('/product', 'Product::index');
+$routes->get('/newProduct', 'Product::newProduct');
+$routes->get('/updateStatus/(:num)', 'Product::updateStatus/$1');
+$routes->post('/saveProduct', 'Product::saveProduct');
+$routes->post('/updateProduct', 'Product::updateProduct');
+$routes->post('/deleteProduct', 'Product::deleteProduct');
+
 
 
 /*
