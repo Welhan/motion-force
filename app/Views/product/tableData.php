@@ -22,12 +22,14 @@
             foreach ($products as $product) : ?>
                 <tr class="text-center h5">
                     <td class="align-middle"><?= $no++; ?></td>
-                    <td class="align-middle">
+                    <!-- <td class="align-middle">
                         <figure class="figure">
                             <img src="img/product/<?= ($product->image) ? $product->image : "default.png" ?>" class="figure-img img-fluid rounded">
                             <figcaption class="figure-caption"><?= ucwords($product->name); ?></figcaption>
                         </figure>
-                    </td>
+                    </td> -->
+
+                    <td><?= ucwords($product->name); ?></td>
                     <td class="align-middle"><?= $product->category; ?></td>
                     <td class="align-middle"><?php if ($product->active == 0) : ?>
                             <a href="/updateStatus/<?= $product->productID; ?>" class="btn btn-sm btn-danger rounded-pill text-white">Not Active</a>
