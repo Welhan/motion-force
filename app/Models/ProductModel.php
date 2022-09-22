@@ -13,7 +13,14 @@ class ProductModel extends Model
 
     public function getAllData()
     {
-        $query = "SELECT product.*, product.id as productID, category.id, category.category FROM product LEFT JOIN category ON product.categoryID = category.id ORDER BY product.id desc";
+        $query = "SELECT product.*, product.id as productID, category.id as categoryID, category.category FROM product LEFT JOIN category ON product.categoryID = category.id ORDER BY product.id desc";
+
+        return $this->query($query)->getResultObject();
+    }
+
+    public function getProduct($id)
+    {
+        $query = "SELECT product.*, product.id as productID, category.id as categoryID, category.category FROM product LEFT JOIN category ON product.categoryID = category.id WHERE product.id = $id ORDER BY product.id desc";
 
         return $this->query($query)->getResultObject();
     }

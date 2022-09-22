@@ -59,22 +59,29 @@
         });
     }, 5000);
 
-    function editCategory(id) {
+    function editProduct(id) {
         $.ajax({
             type: 'POST',
-            url: '/Category/getFormEdit',
+            url: '/Product/getFormEdit',
             data: {
                 id: id
             },
             dataType: 'json',
+            beforeSend: function() {
+                $('#tableData').hide();
+                $('#loader').show();
+            },
             success: function(response) {
                 if (response.error) {
                     if (response.error.logout) {
                         window.location.href = response.error.logout
                     }
                 } else {
-                    $('#viewModal').html(response.data).show();
-                    $('#modal-edit').modal('show');
+                    $('#tableData').show();
+                    $('#loader').hide();
+                    $('.card-header h6').hide()
+                    $('.card-header .dropdown a').hide()
+                    $('#tableData').html(response.data);
                 }
             },
             error: function(xhr, ajaxOptions, thrownError) {
@@ -83,10 +90,10 @@
         })
     }
 
-    function deleteCategory(id) {
+    function deleteProduct(id) {
         $.ajax({
             type: 'POST',
-            url: '/Category/getFormDelete',
+            url: '/Product/getFormDelete',
             data: {
                 id: id
             },
@@ -111,7 +118,7 @@
         // console.log('OK')
         $.ajax({
             type: 'POST',
-            url: '/Category/updateStatus',
+            url: '/Product/updateStatus',
             data: {
                 id: id
             },
@@ -122,7 +129,7 @@
                         window.location.href = response.error.logout
                     }
                 } else {
-                    getDataCategory();
+                    getDataProduct();
                 }
             },
             error: function(xhr, ajaxOptions, thrownError) {

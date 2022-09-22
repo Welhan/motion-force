@@ -24,7 +24,7 @@ class Product extends BaseController
     {
         if (!check_login()) return redirect()->to(base_url('login'));
 
-        // dd($this->categoryModel->where('active', 1)->find());
+        // dd($this->productModel->getProduct(1));
 
         $data = [
             'title' => 'Product',
@@ -148,6 +148,165 @@ class Product extends BaseController
             ];
         } finally {
             session()->setFlashdata($alert);
+            return redirect()->to(base_url('product'));
+        }
+    }
+
+    public function getformEdit()
+    {
+        if ($this->request->isAJAX()) {
+
+            // Verify if user already Login
+            if (!check_login()) {
+                $msg = [
+                    'error' => ['logout' => base_url('logout')]
+                ];
+                echo json_encode($msg);
+                return;
+            }
+
+            $id = $this->request->getPost('id');
+
+            $product = $this->productModel->getProduct($id)[0];
+            $categorys = $this->categoryModel->where('active', 1)->findAll();
+
+            $data = [
+                'product' => $product,
+                'categorys' => $categorys
+            ];
+
+            $msg = [
+                'data' => view('product/editProduct', $data)
+            ];
+
+            echo json_encode($msg);
+        } else {
+            return redirect()->to(base_url('product'));
+        }
+    }
+
+    public function updateProduct()
+    {
+        if ($this->request->isAJAX()) {
+
+            // Verify if user already Login
+            if (!check_login()) {
+                $msg = [
+                    'error' => ['logout' => base_url('logout')]
+                ];
+                echo json_encode($msg);
+                return;
+            }
+
+            $id = $this->request->getPost('id');
+            $name = htmlspecialchars($this->request->getPost('product'), true);
+            $categoryID = $this->request->getPost('category_id');
+            $description = htmlspecialchars($this->request->getPost('description'));
+            $active = ($this->request->getPost('active')) ? $this->request->getPost('active') : 0;
+
+            $oldProduct = $this->productModel->find($id);
+
+            if ($oldProduct->name == $name) {
+                $rules = 'required';
+            } else {
+                $rules = 'required|is_unique[product.name]';
+            }
+
+            // Start Validation
+            $validation = \Config\Services::validation();
+            $valid = $this->validate([
+                'product' => [
+                    'label' => 'Product Name',
+                    'rules' => $rules,
+                    'errors' => [
+                        'required' => '{field} required',
+                        'is_unique' => '{field} already exist'
+                    ]
+                ],
+                'category' => [
+                    'label' => 'Category',
+                    'rules' => 'required',
+                    'errors' => [
+                        'required' => '{field} required'
+                    ]
+                ],
+                'pic' => [
+                    'label' => 'Product Picture',
+                    'rules' => 'uploaded[pic]|mime_in[pic,image/png,image/jpg,image/jpeg]|is_image[pic]',
+                    'errors' => [
+                        'uploaded' => '{field} required',
+                        'mime_in' => '{field} must be image',
+                        'is_image' => '{field} must be image',
+                    ]
+                ],
+            ]);
+
+            if (!$valid) {
+                $msg = [
+                    'error' => [
+                        'product' => $validation->getError('product'),
+                        'category' => $validation->getError('category'),
+                        'pic' => $validation->getError('pic'),
+                    ]
+                ];
+            }
+
+            if (!empty($msg['error'])) {
+                echo json_encode($msg);
+                return;
+            }
+
+            $pic = $this->request->getFile('pic');
+
+            if ($pic) {
+                $image = ucwords($name) . '.' . $pic->getExtension();
+                // dd($image);
+
+                $pic->move('img/product', $image);
+
+                $data = [
+                    'id' => $id,
+                    'categoryID' => $categoryID,
+                    'name' => $name,
+                    'description' => $description,
+                    'image' => $image,
+                    'active' => $active,
+                    'user_update' => session('username'),
+                    'date_update' => date('Y-m-d h:i:s')
+                ];
+            } else {
+                $data = [
+                    'id' => $id,
+                    'categoryID' => $categoryID,
+                    'name' => $name,
+                    'description' => $description,
+                    'active' => $active,
+                    'user_update' => session('username'),
+                    'date_update' => date('Y-m-d h:i:s')
+                ];
+            }
+
+            try {
+                if ($this->productModel->save($data)) {
+                    $alert = [
+                        'message' => "Product $name Updated",
+                        'alert' => 'alert-success'
+                    ];
+
+                    $msg = ['success' => 'Process Success'];
+                }
+            } catch (Exception $e) {
+                $alert = [
+                    'message' => "Product $name Not Updated<br> " . $e->getMessage(),
+                    'alert' => 'alert-danger'
+                ];
+
+                $msg = ['error' => 'Process Terminated'];
+            } finally {
+                session()->setFlashdata($alert);
+                echo json_encode($msg);
+            }
+        } else {
             return redirect()->to(base_url('product'));
         }
     }

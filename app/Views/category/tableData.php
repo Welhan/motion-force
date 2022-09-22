@@ -15,15 +15,15 @@
             <th>Status</th>
             <th width="100px">Action</th>
         </thead>
-        <tbody class="text-center align-middle">
+        <tbody>
             <?php
             $no = 1;
             foreach ($categorys as $category) : ?>
-                <tr>
+                <tr class="text-center h5">
                     <td><?= $no++; ?></td>
                     <td><?= $category->category; ?></td>
                     <td>
-                        <button class="btn" role="button" onclick="updateStatus(<?= $category->id; ?>)"><span class="badge badge-pill <?= ($category->active == 1) ? "badge-success" : "badge-danger"; ?> "><?= ($category->active) ? "Active" : "Not Active"; ?></span></button>
+                        <button class="btn btn-sm <?= ($category->active == 1) ? "btn-success" : "btn-danger"; ?> rounded-pill text-white" role="button" onclick="updateStatus(<?= $category->id; ?>)"><?= ($category->active) ? "Active" : "Not Active"; ?></button>
                     </td>
                     <td>
                         <!-- <button class="btn btn-sm btn-info"><i class="fas fa-eye"></i></button> -->

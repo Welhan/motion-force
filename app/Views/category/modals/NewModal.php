@@ -64,6 +64,28 @@
                     } else {
                         $('#modal-new').modal('hide');
                         getDataCategory();
+
+                        // Notification.requestPermission().then(perm => {
+                        //     if (perm === "granted") {
+                        //         const notification = new Notification("Example Notification", {
+                        //             body: "Hello, test notification",
+                        //             tag: "notification"
+                        //         })
+                        //     }
+                        // })
+
+                        // let notification;
+
+                        // document.addEventListener("visbilitychange", () => {
+                        //     if (document.visibilityState === "hidden") {
+                        //         notification = new Notification('New Catergoy Added', {
+                        //             body: "New Category Added",
+                        //             tag: "notification"
+                        //         })
+                        //     } else {
+                        //         notification.close();
+                        //     }
+                        // })
                     }
                 },
                 error: function(xhr, ajaxOptions, thrownError) {
