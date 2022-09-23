@@ -214,41 +214,72 @@ class Product extends BaseController
 
             // Start Validation
             $validation = \Config\Services::validation();
-            $valid = $this->validate([
-                'product' => [
-                    'label' => 'Product Name',
-                    'rules' => $rules,
-                    'errors' => [
-                        'required' => '{field} required',
-                        'is_unique' => '{field} already exist'
-                    ]
-                ],
-                'category' => [
-                    'label' => 'Category',
-                    'rules' => 'required',
-                    'errors' => [
-                        'required' => '{field} required'
-                    ]
-                ],
-                'pic' => [
-                    'label' => 'Product Picture',
-                    'rules' => 'uploaded[pic]|mime_in[pic,image/png,image/jpg,image/jpeg]|is_image[pic]',
-                    'errors' => [
-                        'uploaded' => '{field} required',
-                        'mime_in' => '{field} must be image',
-                        'is_image' => '{field} must be image',
-                    ]
-                ],
-            ]);
 
-            if (!$valid) {
-                $msg = [
-                    'error' => [
-                        'product' => $validation->getError('product'),
-                        'category' => $validation->getError('category'),
-                        'pic' => $validation->getError('pic'),
+            $pic = $this->request->getFile('pic');
+
+            if ($pic->getError() == 4) {
+                $valid = $this->validate([
+                    'product' => [
+                        'label' => 'Product Name',
+                        'rules' => $rules,
+                        'errors' => [
+                            'required' => '{field} required',
+                            'is_unique' => '{field} already exist'
+                        ]
+                    ],
+                    'category' => [
+                        'label' => 'Category',
+                        'rules' => 'required',
+                        'errors' => [
+                            'required' => '{field} required'
+                        ]
                     ]
-                ];
+                ]);
+
+                if (!$valid) {
+                    $msg = [
+                        'error' => [
+                            'product' => $validation->getError('product'),
+                            'category' => $validation->getError('category')
+                        ]
+                    ];
+                }
+            } else {
+                $valid = $this->validate([
+                    'product' => [
+                        'label' => 'Product Name',
+                        'rules' => $rules,
+                        'errors' => [
+                            'required' => '{field} required',
+                            'is_unique' => '{field} already exist'
+                        ]
+                    ],
+                    'category' => [
+                        'label' => 'Category',
+                        'rules' => 'required',
+                        'errors' => [
+                            'required' => '{field} required'
+                        ]
+                    ],
+                    'pic' => [
+                        'label' => 'Product Picture',
+                        'rules' => 'is_image[pic]|mime_in[pic,image/png,image/jpg,image/jpeg]',
+                        'errors' => [
+                            'mime_in' => '{field} must be image',
+                            'is_image' => '{field} must be image'
+                        ]
+                    ],
+                ]);
+
+                if (!$valid) {
+                    $msg = [
+                        'error' => [
+                            'product' => $validation->getError('product'),
+                            'category' => $validation->getError('category'),
+                            'pic' => $validation->getError('pic'),
+                        ]
+                    ];
+                }
             }
 
             if (!empty($msg['error'])) {
@@ -256,35 +287,28 @@ class Product extends BaseController
                 return;
             }
 
-            $pic = $this->request->getFile('pic');
+            if ($pic->getError() == 4) {
+                $image = $oldProduct->image;
+            } else {
 
-            if ($pic) {
                 $image = ucwords($name) . '.' . $pic->getExtension();
                 // dd($image);
 
                 $pic->move('img/product', $image);
 
-                $data = [
-                    'id' => $id,
-                    'categoryID' => $categoryID,
-                    'name' => $name,
-                    'description' => $description,
-                    'image' => $image,
-                    'active' => $active,
-                    'user_update' => session('username'),
-                    'date_update' => date('Y-m-d h:i:s')
-                ];
-            } else {
-                $data = [
-                    'id' => $id,
-                    'categoryID' => $categoryID,
-                    'name' => $name,
-                    'description' => $description,
-                    'active' => $active,
-                    'user_update' => session('username'),
-                    'date_update' => date('Y-m-d h:i:s')
-                ];
+                unlink('img/' . $this->request->getPost('oldImg'));
             }
+
+            $data = [
+                'id' => $id,
+                'categoryID' => $categoryID,
+                'name' => $name,
+                'description' => $description,
+                'image' => $image,
+                'active' => $active,
+                'user_update' => session('username'),
+                'date_update' => date('Y-m-d h:i:s')
+            ];
 
             try {
                 if ($this->productModel->save($data)) {

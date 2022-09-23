@@ -6,7 +6,7 @@
     </div>
 <?php endif; ?>
 
-<div class="table-responsive">
+<div class="table-responsive animated--grow-in">
 
     <table class="table table-bordered table-hover" id="datatable">
         <thead class="thead-light text-center">

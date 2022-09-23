@@ -9,8 +9,11 @@
             <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
                 <h6 class="m-0 font-weight-bold text-primary">Product List</h6>
                 <div class="dropdown no-arrow">
-                    <a class="dropdown-toggle btn btn-primary btn-sm" role="button" href="/newProduct">
+                    <a class="dropdown-toggle btn btn-primary btn-sm" id="btnNew" role="button" href="/newProduct">
                         <i class="fas fa-plus fa-sm fa-fw text-gray-400"></i>New
+                    </a>
+                    <a class="dropdown-toggle btn btn-info btn-sm" role="button" id="btnBack" style="display: none;">
+                        <i class="fas fa-arrow-left fa-sm fa-fw text-gray-400"></i>Back
                     </a>
                 </div>
             </div>
@@ -80,6 +83,35 @@
 
     $(document).ready(() => {
         getDataProduct();
+
+        $('#btnBack').click((e) => {
+            e.preventDefault();
+            $.ajax({
+                url: '/Product/getDataProduct',
+                dataType: 'json',
+                beforeSend: function() {
+                    $('#tableData').hide();
+                    $('#loader').show();
+                },
+                success: function(response) {
+                    if (response.error) {
+                        if (response.error.logout) {
+                            window.location.href = response.error.logout
+                        }
+                    } else {
+                        $('#tableData').show();
+                        $('#loader').hide();
+                        $('.card-header h6').show()
+                        $('#btnNew').show()
+                        $('#btnBack').hide()
+                        $('#tableData').html(response.data);
+                    }
+                },
+                error: function(xhr, ajaxOptions, thrownError) {
+                    alert(xhr.status + "\n" + xhr.responseText + "\n" + thrownError);
+                }
+            });
+        })
     })
 </script>
 
