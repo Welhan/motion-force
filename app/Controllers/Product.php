@@ -334,4 +334,58 @@ class Product extends BaseController
             return redirect()->to(base_url('product'));
         }
     }
+
+    public function updateStatus()
+    {
+        if ($this->request->isAJAX()) {
+            // Verify if user already Login
+            if (!check_login()) {
+                $msg = [
+                    'error' => ['logout' => base_url('logout')]
+                ];
+                echo json_encode($msg);
+                return;
+            }
+
+            $id = $this->request->getPost('id');
+
+            $product = $this->productModel->find($id);
+
+            if ($product->active == 0) {
+                $active = 1;
+            } else {
+                $active = 0;
+            }
+
+            $data = [
+                'id' => $id,
+                'active' => $active,
+                'user_update' => session('username'),
+                'date_update' => date('Y-m-d h:i:s')
+            ];
+
+            try {
+                if ($this->productModel->save($data)) {
+                    $alert = [
+                        'message' => "Product $product->name Updated",
+                        'alert' => 'alert-success'
+                    ];
+
+                    $msg = ['success' => 'Process Success'];
+                }
+            } catch (Exception $e) {
+                $alert = [
+                    'message' => "Product $product->name Not Updated<br> " . $e->getMessage(),
+                    'alert' => 'alert-danger'
+                ];
+
+                $msg = ['error' => 'Process Terminated'];
+            } finally {
+                session()->setFlashdata($alert);
+                echo json_encode($msg);
+            }
+        } else {
+            return redirect()->to(base_url('product'));
+        }
+    }
 }

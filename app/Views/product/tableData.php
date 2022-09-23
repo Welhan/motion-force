@@ -31,13 +31,8 @@
 
                     <td><?= ucwords($product->name); ?></td>
                     <td class="align-middle"><?= $product->category; ?></td>
-                    <td class="align-middle"><?php if ($product->active == 0) : ?>
-                            <a href="/updateStatus/<?= $product->productID; ?>" class="btn btn-sm btn-danger rounded-pill text-white">Not Active</a>
-                            <!-- <span class="badge rounded-pill badge-danger">Not Active</span> -->
-                        <?php else : ?>
-                            <a href="/updateStatus/<?= $product->productID; ?>" class="btn btn-sm btn-success rounded-pill text-white">Active</a>
-                            <!-- <span class="badge rounded-pill bg-green">Active</span> -->
-                        <?php endif; ?>
+                    <td class="align-middle">
+                        <button type="button" class="btn btn-sm <?= ($product->active == 0) ? 'btn-danger' : 'btn-success'; ?>  rounded-pill text-white" onclick="updateStatus(<?= $product->id; ?>)"><?= ($product->active == 0) ? 'Not Active' : "Active"; ?></button>
                     </td>
                     <td class="align-middle" width="150px">
                         <button class="btn btn-success btn-sm"><i class="fa fa-eye"></i></button>
