@@ -291,12 +291,10 @@ class Product extends BaseController
                 $image = $oldProduct->image;
             } else {
 
-                $image = ucwords($name) . '.' . $pic->getExtension();
+                $image = ucwords($name) . ' New.' . $pic->getExtension();
                 // dd($image);
-
-                $pic->move('img/product', $image);
-
-                unlink('img/' . $this->request->getPost('oldImg'));
+                unlink('img/product/' . $this->request->getPost('oldImg'));
+                $pic->move('img/product/', $image);
             }
 
             $data = [
