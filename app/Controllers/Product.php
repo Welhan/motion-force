@@ -386,4 +386,80 @@ class Product extends BaseController
             return redirect()->to(base_url('product'));
         }
     }
+
+    public function getFormDelete()
+    {
+        if ($this->request->isAJAX()) {
+
+            // Verify if user already Login
+            if (!check_login()) {
+                $msg = [
+                    'error' => ['logout' => base_url('logout')]
+                ];
+                echo json_encode($msg);
+                return;
+            }
+
+            $id = $this->request->getPost('id');
+
+            $product = $this->productModel->find($id);
+
+            $data = [
+                'product' => $product
+            ];
+
+            $msg = [
+                'data' => view('product/modals/deleteModal', $data)
+            ];
+
+            echo json_encode($msg);
+        } else {
+            return redirect()->to(base_url('product'));
+        }
+    }
+
+    public function deleteProduct()
+    {
+        if ($this->request->isAJAX()) {
+            // Verify if user already Login
+            if (!check_login()) {
+                $msg = [
+                    'error' => ['logout' => base_url('logout')]
+                ];
+                echo json_encode($msg);
+                return;
+            }
+
+            $id = $this->request->getPost('id');
+
+            $product = $this->productModel->find($id);
+
+            $image = $product->image;
+
+            unlink('img/product/' . $image);
+
+            try {
+                if ($this->productModel->delete($id)) {
+                    $alert = [
+                        'message' => "Product $product->name Updated",
+                        'alert' => 'alert-success'
+                    ];
+
+                    $msg = ['success' => 'Process Success'];
+                }
+            } catch (Exception $e) {
+                $alert = [
+                    'message' => "Product $product->name Not Updated<br> " . $e->getMessage(),
+                    'alert' => 'alert-danger'
+                ];
+
+                $msg = ['error' => 'Process Terminated'];
+            } finally {
+                session()->setFlashdata($alert);
+                echo json_encode($msg);
+            }
+        } else {
+            return redirect()->to(base_url('product'));
+        }
+    }
 }
