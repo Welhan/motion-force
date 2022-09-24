@@ -78,12 +78,12 @@ $categorys = $db->query('SELECT * FROM category WHERE active = 1 and ID IN(SELEC
             <div class="scrollto" href="index.html#about"></div>
         </div>
     </header>
-    <section id="hero-animated" class="hero-animated d-flex align-items-center">
+    <!-- <section id="hero-animated" class="hero-animated d-flex align-items-center">
         <div class="container d-flex flex-column justify-content-center align-items-center text-center position-relative" data-aos="zoom-out"> <img src="herobiz/assets/img/hero-carousel/hero-carousel-3.svg" class="img-fluid animated">
             <h2>Welcome to <span>Motion Force</span></h2>
             <p>Et voluptate esse accusantium accusamus natus reiciendis quidem voluptates similique aut.</p>
         </div>
-    </section>
+    </section> -->
     <main id="main">
         <?= $this->renderSection('fe_content'); ?>
     </main>
