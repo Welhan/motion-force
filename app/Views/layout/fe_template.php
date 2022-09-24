@@ -44,7 +44,7 @@ $categorys = $db->query('SELECT * FROM category WHERE active = 1 and ID IN(SELEC
                                     $products = $db->query("SELECT * FROM product WHERE active=1 and categoryID = $category->id");
                                     foreach ($products->getResult() as $product) :
                                     ?>
-                                        <a href="#"><?= $product->name; ?></a>
+                                        <a href="#">>> <?= $product->name; ?></a>
                                     <?php endforeach; ?>
                                 </li>
                             <?php endforeach; ?>

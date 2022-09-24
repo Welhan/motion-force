@@ -423,10 +423,13 @@ section {
     right: 0;
     padding: 10px;
     display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
   }
 
   .navbar .megamenu ul li {
-    flex: 1;
+    flex: 0;
+    top: 0;
   }
 
   .navbar .megamenu ul li a,

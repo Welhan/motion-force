@@ -35,7 +35,8 @@
                         <button type="button" class="btn btn-sm <?= ($product->active == 0) ? 'btn-danger' : 'btn-success'; ?>  rounded-pill text-white" onclick="updateStatus(<?= $product->id; ?>)"><?= ($product->active == 0) ? 'Not Active' : "Active"; ?></button>
                     </td>
                     <td class="align-middle" width="150px">
-                        <button class="btn btn-success btn-sm"><i class="fa fa-eye"></i></button>
+                        <button class="btn btn-info btn-sm" onclick="addImg(<?= $product->id; ?>)"><i class="fas fa-plus"></i></button>
+                        <button class="btn btn-success btn-sm" onclick="detailProduct(<?= $product->id; ?>)"><i class="fa fa-eye"></i></button>
                         <button class="btn btn-primary btn-sm" onclick="editProduct(<?= $product->id; ?>)"><i class="fa fa-edit"></i></button>
                         <button class="btn btn-danger btn-sm" onclick="deleteProduct(<?= $product->id; ?>)"><i class="fa fa-trash"></i></button>
                     </td>
