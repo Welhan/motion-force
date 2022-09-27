@@ -3,7 +3,7 @@
 <?= $this->section('fe_content'); ?>
 
 <!-- ======= Hero Section ======= -->
-<section id="hero" class="hero carousel  carousel-fade" data-bs-ride="carousel" data-bs-interval="5000">
+<!-- <section id="hero" class="hero carousel carousel-fade" data-bs-ride="carousel" data-bs-interval="5000">
 
     <div class="carousel-item active">
         <div class="container">
@@ -12,16 +12,9 @@
                 <div class="col-lg-5 col-md-8">
                     <img src="herobiz/assets/img/hero-carousel/hero-carousel-1.svg" alt="" class="img-fluid img">
                 </div>
-
-                <div class="col-lg-9 text-center">
-                    <h2>Welcome to HeroBiz</h2>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-                    <a href="#featured-services" class="btn-get-started scrollto ">Get Started</a>
-                </div>
-
             </div>
         </div>
-    </div><!-- End Carousel Item -->
+    </div>
 
     <div class="carousel-item">
         <div class="container">
@@ -30,16 +23,9 @@
                 <div class="col-lg-5 col-md-8">
                     <img src="herobiz/assets/img/hero-carousel/hero-carousel-2.svg" alt="" class="img-fluid img">
                 </div>
-
-                <div class="col-lg-9 text-center">
-                    <h2>At vero eos et accusamus</h2>
-                    <p>Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis aut.</p>
-                    <a href="#featured-services" class="btn-get-started scrollto ">Get Started</a>
-                </div>
-
             </div>
         </div>
-    </div><!-- End Carousel Item -->
+    </div>
 
     <div class="carousel-item">
         <div class="container">
@@ -48,16 +34,9 @@
                 <div class="col-lg-5 col-md-8">
                     <img src="herobiz/assets/img/hero-carousel/hero-carousel-3.svg" alt="" class="img-fluid img">
                 </div>
-
-                <div class="col-lg-9 text-center">
-                    <h2>Temporibus autem quibusdam</h2>
-                    <p>Beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt omnis iste natus error sit voluptatem accusantium.</p>
-                    <a href="#featured-services" class="btn-get-started scrollto ">Get Started</a>
-                </div>
-
             </div>
         </div>
-    </div><!-- End Carousel Item -->
+    </div>
 
     <a class="carousel-control-prev" href="#hero" role="button" data-bs-slide="prev">
         <span class="carousel-control-prev-icon bi bi-chevron-left" aria-hidden="true"></span>
@@ -69,9 +48,59 @@
 
     <ol class="carousel-indicators"></ol>
 
-</section><!-- End Hero Section -->
+</section> -->
 
-<section id="featured-services" class="featured-services">
+<section id="hero" class="hero carousel carousel-fade" data-bs-ride="carousel" data-bs-interval="5000">
+
+    <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <div class="container">
+                    <div class="row justify-content-center gy-6">
+
+                        <div class="col-lg-5 col-md-8">
+                            <img src="herobiz/assets/img/hero-carousel/hero-carousel-1.svg" alt="" class="img-fluid img">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="carousel-item">
+                <div class="container">
+                    <div class="row justify-content-center gy-6">
+
+                        <div class="col-lg-5 col-md-8">
+                            <img src="herobiz/assets/img/hero-carousel/hero-carousel-2.svg" alt="" class="img-fluid img">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="carousel-item">
+                <div class="container">
+                    <div class="row justify-content-center gy-6">
+
+                        <div class="col-lg-5 col-md-8">
+                            <img src="herobiz/assets/img/hero-carousel/hero-carousel-3.svg" alt="" class="img-fluid img">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button> -->
+    </div>
+
+</section>
+<!-- End Hero Section -->
+
+<!-- <section id="featured-services" class="featured-services">
     <div class="container">
         <div class="row gy-4">
             <div class="col-xl-3 col-md-6 d-flex" data-aos="zoom-out">
@@ -104,7 +133,7 @@
             </div>
         </div>
     </div>
-</section>
+</section> -->
 <section id="about" class="about">
     <div class="container" data-aos="fade-up">
         <div class="section-header">
@@ -723,31 +752,37 @@
     <div class="container">
         <div class="section-header">
             <h2>Contact Us</h2>
-            <p>Ea vitae aspernatur deserunt voluptatem impedit deserunt magnam occaecati dssumenda quas ut ad dolores adipisci aliquam.</p>
+            <p>We are not limited to what is on website. For other type or specifications, please contact our team!</p>
         </div>
     </div>
     <div class="container">
         <div class="row gy-5 gx-lg-5">
             <div class="col-lg-4">
                 <div class="info">
-                    <h3>Get in touch</h3>
-                    <p>Et id eius voluptates atque nihil voluptatem enim in tempore minima sit ad mollitia commodi minus.</p>
-                    <div class="info-item d-flex"> <i class="bi bi-geo-alt flex-shrink-0"></i>
-                        <div>
-                            <h4>Location:</h4>
-                            <p>A108 Adam Street, New York, NY 535022</p>
-                        </div>
-                    </div>
+                    <h3 class="text-center">Get in touch</h3>
+                    <!-- <p>Et id eius voluptates atque nihil voluptatem enim in tempore minima sit ad mollitia commodi minus.</p> -->
                     <div class="info-item d-flex"> <i class="bi bi-envelope flex-shrink-0"></i>
                         <div>
                             <h4>Email:</h4>
-                            <p><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="f79e999198b7928f969a879b92d994989a">[email&#160;protected]</a></p>
+                            <p><a href="https://info@motionforce.sahabatdigital.id" class="__cf_email__" data-cfemail="f79e999198b7928f969a879b92d994989a">info@motionforce.sahabatdigital.id</a></p>
+                        </div>
+                    </div>
+                    <div class="info-item d-flex mt-3"> <i class="bi bi-wechat flex-shrink-0"></i>
+                        <div>
+                            <h4>Wechat:</h4>
+                            <p>MotionForce_HK</p>
+                        </div>
+                    </div>
+                    <div class="info-item d-flex"> <i class="bi bi-whatsapp flex-shrink-0"></i>
+                        <div>
+                            <h4>WhatsApp:</h4>
+                            <p><a href="https://wa.me/+6282390402789" target="_blank">+62 823 9040 2789</a></p>
                         </div>
                     </div>
                     <div class="info-item d-flex"> <i class="bi bi-phone flex-shrink-0"></i>
                         <div>
-                            <h4>Call:</h4>
-                            <p>+1 5589 55488 55</p>
+                            <h4>Phone:</h4>
+                            <p>(+852) 2650 8580</p>
                         </div>
                     </div>
                 </div>
@@ -758,7 +793,14 @@
                         <div class="col-md-6 form-group"> <input type="text" name="name" class="form-control" id="name" placeholder="Your Name" required></div>
                         <div class="col-md-6 form-group mt-3 mt-md-0"> <input type="email" class="form-control" name="email" id="email" placeholder="Your Email" required></div>
                     </div>
-                    <div class="form-group mt-3"> <input type="text" class="form-control" name="subject" id="subject" placeholder="Subject" required></div>
+                    <div class="row">
+                        <div class="col-md-6 form-group">
+                            <div class="form-group mt-3"> <input type="text" class="form-control" name="company" id="company" placeholder="Company" required></div>
+                        </div>
+                        <div class="col-md-6 form-group">
+                            <div class="form-group mt-3"> <input type="text" class="form-control" name="subject" id="subject" placeholder="Subject" required></div>
+                        </div>
+                    </div>
                     <div class="form-group mt-3"><textarea class="form-control" name="message" placeholder="Message" required></textarea></div>
                     <div class="my-3">
                         <div class="loading">Loading</div>
