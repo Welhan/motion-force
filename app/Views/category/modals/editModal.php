@@ -9,6 +9,7 @@
                 </button>
             </div>
             <form action="/updateCategory" method="post" class="formSubmit">
+                <?= csrf_field(); ?>
                 <input type="hidden" name="id" value="<?= $category->id; ?>">
                 <div class="modal-body">
                     <div class="form-group">

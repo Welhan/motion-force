@@ -61,6 +61,9 @@ $routes->post('/saveProduct', 'Product::saveProduct');
 $routes->post('/updateProduct', 'Product::updateProduct');
 $routes->post('/deleteProduct', 'Product::deleteProduct');
 
+// Product Menu
+$routes->get('/company', 'Company::index');
+
 
 
 /*

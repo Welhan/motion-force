@@ -39,6 +39,7 @@
                                     </div>
 
                                     <form class="user" method="POST" action="/logining">
+                                        <?= csrf_field(); ?>
                                         <?php if (session('message')) : ?>
                                             <div class="alert <?= session('alert'); ?> alert-dismissible" role="alert">
                                                 <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span>

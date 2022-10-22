@@ -9,6 +9,7 @@
                 </button>
             </div>
             <form action="/saveCategory" method="post" class="formSubmit">
+                <?= csrf_field(); ?>
                 <div class="modal-body">
                     <div class="form-group">
                         <label for="category">Category</label>

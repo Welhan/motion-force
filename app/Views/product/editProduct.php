@@ -6,6 +6,7 @@
             </div>
             <div class="card-body">
                 <form action="/updateProduct" method="post" enctype="multipart/form-data" class="formSubmit">
+                    <?= csrf_field(); ?>
                     <input type="hidden" name="id" value="<?= $product->productID; ?>">
                     <input type="hidden" name="oldImg" value="<?= $product->image; ?>">
                     <div class="row justify-content-center">

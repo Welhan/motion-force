@@ -6,7 +6,7 @@
                 <h4 class="modal-title" id="myModalLabel">Delete Category: <b><?= ucwords($category->category); ?></b></h4>
             </div>
             <form action="/deleteCategory" method="post" class="formSubmit">
-
+                <?= csrf_field(); ?>
                 <input type="hidden" name="id" value="<?= $category->id; ?>">
                 <div class="modal-body">
                     <h4>Are You Sure?</h4>
