@@ -75,7 +75,7 @@ $categorys = $db->query('SELECT * FROM category WHERE active = 1 and ID IN(SELEC
                     <li><a class="nav-link scrollto" href="index.html#contact">Contact</a></li>
                 </ul> <i class="bi bi-list mobile-nav-toggle d-none"></i>
             </nav>
-            <div class="scrollto" href="index.html#about"></div>
+            <div class="scrollto"><a href="#" target="_blank" class="btn btn-success"><i class="bi bi-whatsapp flex-shrink-0"></i></a></div>
         </div>
     </header>
     <!-- <section id="hero-animated" class="hero-animated d-flex align-items-center">
@@ -131,7 +131,7 @@ $categorys = $db->query('SELECT * FROM category WHERE active = 1 and ID IN(SELEC
                     <div class="copyright"> &copy; Copyright <strong><span>Motion Force (Powered By: WProject & HeroBiz)</span></strong>. All Rights Reserved</div>
                     <!-- <div class="credits"> Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a></div> -->
                 </div>
-                <div class="social-links order-first order-lg-last mb-3 mb-lg-0"> <a href="#" class="twitter"><i class="bi bi-twitter"></i></a> <a href="#" class="facebook"><i class="bi bi-facebook"></i></a> <a href="#" class="instagram"><i class="bi bi-instagram"></i></a> <a href="#" class="google-plus"><i class="bi bi-skype"></i></a> <a href="#" class="linkedin"><i class="bi bi-linkedin"></i></a></div>
+                <!-- <div class="social-links order-first order-lg-last mb-3 mb-lg-0"> <a href="#" class="twitter"><i class="bi bi-twitter"></i></a> <a href="#" class="facebook"><i class="bi bi-facebook"></i></a> <a href="#" class="instagram"><i class="bi bi-instagram"></i></a> <a href="#" class="google-plus"><i class="bi bi-skype"></i></a> <a href="#" class="linkedin"><i class="bi bi-linkedin"></i></a></div> -->
             </div>
         </div>
     </footer> <a href="#" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
@@ -145,7 +145,7 @@ $categorys = $db->query('SELECT * FROM category WHERE active = 1 and ID IN(SELEC
     <!-- <script src="herobiz/assets/vendor/php-email-form/validate.js"></script> -->
     <script src="herobiz/assets/js/main.js"></script>
     <script async src='https://www.googletagmanager.com/gtag/js?id=G-P7JSYB1CSP'></script>
-    <script>
+    <!-- <script>
         if (window.self == window.top) {
             window.dataLayer = window.dataLayer || [];
 
@@ -155,7 +155,7 @@ $categorys = $db->query('SELECT * FROM category WHERE active = 1 and ID IN(SELEC
             gtag('js', new Date());
             gtag('config', 'G-P7JSYB1CSP');
         }
-    </script>
+    </script> -->
 </body>
 
 </html>
