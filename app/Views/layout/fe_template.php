@@ -25,6 +25,8 @@ $categorys = $db->query('SELECT * FROM category WHERE active = 1 and ID IN(SELEC
     <link href="herobiz/assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
     <link href="herobiz/assets/css/variables.css" rel="stylesheet">
     <link href="herobiz/assets/css/main.css" rel="stylesheet">
+
+    <script src="../../../node_modules/ckeditor4/ckeditor.js"></script>
 </head>
 
 <body>
