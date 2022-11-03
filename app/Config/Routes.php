@@ -64,6 +64,9 @@ $routes->post('/deleteProduct', 'Product::deleteProduct');
 // Product Menu
 $routes->get('/company', 'Company::index');
 
+// News
+$routes->get('/news', 'News::index');
+
 
 
 /*

@@ -26,7 +26,6 @@ $categorys = $db->query('SELECT * FROM category WHERE active = 1 and ID IN(SELEC
     <link href="herobiz/assets/css/variables.css" rel="stylesheet">
     <link href="herobiz/assets/css/main.css" rel="stylesheet">
 
-    <script src="../../../node_modules/ckeditor4/ckeditor.js"></script>
 </head>
 
 <body>
@@ -77,7 +76,7 @@ $categorys = $db->query('SELECT * FROM category WHERE active = 1 and ID IN(SELEC
                     <li><a class="nav-link scrollto" href="index.html#contact">Contact</a></li>
                 </ul> <i class="bi bi-list mobile-nav-toggle d-none"></i>
             </nav>
-            <div class="scrollto"><a href="#" target="_blank" class="btn btn-success"><i class="bi bi-whatsapp flex-shrink-0"></i></a></div>
+            <div class="scrollto"><a href="https://wa.me/+6282390402789" target="_blank" class="btn btn-success"><i class="bi bi-whatsapp flex-shrink-0"></i></a></div>
         </div>
     </header>
     <!-- <section id="hero-animated" class="hero-animated d-flex align-items-center">

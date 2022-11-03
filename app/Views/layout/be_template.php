@@ -26,6 +26,8 @@ $menu = generate_menu();
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
     <link href="vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
 
+    <script src="<?= base_url('vendor/vendor/ckeditor/ckeditor/ckeditor.js'); ?>"></script>
+
 </head>
 
 <body id="page-top">

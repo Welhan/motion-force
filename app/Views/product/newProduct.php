@@ -60,7 +60,6 @@
                     <div class="card-footer mb-3 mt-2">
                         <button type="submit" class="btn btn-primary">Save</button>
                     </div>
-
                 </form>
             </div>
         </div>
@@ -124,6 +123,12 @@
             categoryID.value = select[i].getAttribute('data-bs-id');
         });
     }
+
+    // CKEDITOR.replace('description', {
+    //     // removePlugins: 'about,insert,forms,others',
+    //     // Remove the redundant buttons from toolbar groups defined above.
+    //     removeButtons: 'Strike,Subscript,Superscript,Specialchar,PasteFromWord,Table,Image,Anchor'
+    // });
 </script>
 
 <?= $this->endSection(); ?>

@@ -764,7 +764,7 @@
                     <div class="info-item d-flex"> <i class="bi bi-envelope flex-shrink-0"></i>
                         <div>
                             <h4>Email:</h4>
-                            <p><a href="https://info@motionforce.sahabatdigital.id">info@motionforce.sahabatdigital.id</a></p>
+                            <p><a href="mailto://welhan.susanto@gmail.com">info@motionforce.sahabatdigital.id</a></p>
                         </div>
                     </div>
                     <div class="info-item d-flex mt-3"> <i class="bi bi-wechat flex-shrink-0"></i>
