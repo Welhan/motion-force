@@ -1,4 +1,6 @@
-<form action="">
+<!-- Belum berhasil Update -->
+
+<form action="/company" enctype="multipart/form-data" class="formSubmit">
     <?= csrf_field(); ?>
     <div class="row">
         <div class="col-md-5">
@@ -17,6 +19,7 @@
             <div class="form-group">
                 <label for="company_name"><i class="fas fa-home"></i> Company Name:</label>
                 <input type="text" class="form-control" id="company_name" name="company_name" value="<?= $company->name; ?>">
+                <div id="errCompanyName" class="invalid-feedback"></div>
             </div>
             <div class="form-group">
                 <label for="company_email"> <i class="fas fa-envelope"></i> Email:</label>
@@ -38,7 +41,54 @@
     </div>
     <div class="row">
         <div class="col-md-6">
-            <button type="submit" class="btn btn-primary">Save</button>
+            <button type="submit" class="btn btn-primary" id="btnProcess">Save</button>
         </div>
     </div>
 </form>
+
+<?= $this->section('javascript'); ?>
+<script>
+    $(document).ready(() => {
+        $('.formSubmit').submit(function(e) {
+            e.preventDefault();
+
+            $.ajax({
+                // type: 'post',
+                url: $(this).attr('action'),
+                data: new FormData(this),
+                dataType: 'json',
+                beforeSend: function() {
+                    $('#btnProcess').attr('disabled', 'disabled');
+                    $('#btnProcess').html('<i class="fa fa-spin fa-spinner"></i>');
+                },
+                success: function(response) {
+                    if (response.error) {
+                        $('#btnProcess').removeAttr('disabled');
+                        $('#btnProcess').html('Save');
+                        if (response.error.logout) {
+                            window.location.href = response.error.logout
+                        }
+
+
+                        if (response.error.company_name) {
+                            $('#company_name').addClass('is-invalid');
+                            $('#errCompanyName').html(response.error.company_name)
+                        } else {
+                            $('#company_name').removeClass('is-invalid');
+                            $('#errCompanyName').html('')
+                        }
+                    } else {
+                        alert('OK');
+                        $('#btnBack').hide()
+                        $('#btnEdit').show()
+                        getDataProfile();
+                    }
+                },
+                error: function(xhr, ajaxOptions, thrownError) {
+                    alert(xhr.status + "\n" + xhr.responseText + "\n" + thrownError);
+                }
+            })
+        })
+    })
+</script>
+<?= $this->endSection(); ?>

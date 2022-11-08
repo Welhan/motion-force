@@ -39,7 +39,7 @@
 <?= $this->section('javascript'); ?>
 
 <script>
-    function getDataCategory() {
+    function getDataProfile() {
         $.ajax({
             url: '/Company/getProfile',
             dataType: 'json',
@@ -65,7 +65,7 @@
     }
 
     $(document).ready(() => {
-        getDataCategory();
+        getDataProfile();
 
         $('#btnEdit').click(function(e) {
             e.preventDefault();
