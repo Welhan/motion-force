@@ -97,6 +97,11 @@ class Company extends BaseController
 
             // Start Validation
             $validation = \Config\Services::validation();
+
+            $pic = $this->request->getFile('pic');
+
+            $oldImg = $this->userModel->find(1);
+
             $valid = $this->validate([
                 'company_name' => [
                     'label' => 'Company Name',
@@ -119,15 +124,26 @@ class Company extends BaseController
                 return;
             }
 
+            if ($pic->getError() == 4) {
+                $image = $oldImg->img;
+            } else {
+
+                $image = $pic->getFilename();
+                // dd($image);
+                unlink('img/' . $this->request->getPost('oldImg'));
+                $pic->move('img/');
+            }
+
             $data = [
                 'id' => 1,
-                'nama' => htmlspecialchars($this->request->getPost('nama')),
+                'name' => htmlspecialchars($this->request->getPost('company_name')),
                 'phone' => htmlspecialchars($this->request->getPost('phone')),
                 'email' => htmlspecialchars($this->request->getPost('company_email')),
                 'wechat' => htmlspecialchars($this->request->getPost('wechat')),
                 'whatsapp' => htmlspecialchars($this->request->getPost('whatsapp')),
-                'img' => htmlspecialchars($this->request->getPost('nama')),
+                'img' => $image,
             ];
+
 
             try {
                 if ($this->userModel->save($data)) {

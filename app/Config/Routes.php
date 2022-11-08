@@ -63,7 +63,7 @@ $routes->post('/deleteProduct', 'Product::deleteProduct');
 
 // Company Profile Menu
 $routes->get('/company', 'Company::index');
-$routes->post('/company', 'Company::saveProfile');
+$routes->post('/saveCompany', 'Company::saveProfile');
 
 // News
 $routes->get('/news', 'News::index');

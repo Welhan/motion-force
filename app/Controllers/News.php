@@ -32,7 +32,13 @@ class News extends BaseController
     {
         if ($this->request->isAJAX()) {
 
-            if (!check_login()) return redirect()->to(base_url('login'));
+            if (!check_login()) {
+                $msg = [
+                    'error' => ['logout' => base_url('logout')]
+                ];
+                echo json_encode($msg);
+                return;
+            }
 
             $news = $this->newsModel->find();
 
@@ -41,7 +47,28 @@ class News extends BaseController
             ];
 
             $msg = [
-                'data' => view('news/tableData', $data)
+                'data' => view('news/tableData1', $data)
+            ];
+
+            echo json_encode($msg);
+        } else {
+            return redirect()->to(base_url('news'));
+        }
+    }
+
+    public function getFormNew()
+    {
+        if ($this->request->isAJAX()) {
+            if (!check_login()) {
+                $msg = [
+                    'error' => ['logout' => base_url('logout')]
+                ];
+                echo json_encode($msg);
+                return;
+            }
+
+            $msg = [
+                'data' => view('news/modals/newModal')
             ];
 
             echo json_encode($msg);

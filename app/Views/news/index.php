@@ -26,20 +26,14 @@
                     </button>
                 </div>
 
-                <?php if (session('message')) : ?>
-                    <div class="alert <?= session('alert'); ?> alert-dismissible" role="alert">
-                        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span>
-                        </button>
-                        <?= session('message'); ?>
-                    </div>
-                <?php endif; ?>
-
                 <div id="tableData"></div>
 
             </div>
         </div>
     </div>
 </div>
+
+<div id="viewModal" style="display: none;"></div>
 
 <?= $this->endSection(); ?>
 

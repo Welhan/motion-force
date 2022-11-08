@@ -1,7 +1,6 @@
-<!-- Belum berhasil Update -->
-
-<form action="/company" enctype="multipart/form-data" class="formSubmit">
+<form action="/saveCompany" enctype="multipart/form-data" class="formSubmit">
     <?= csrf_field(); ?>
+    <input type="hidden" name="oldImg" value="<?= $company->img; ?>">
     <div class="row">
         <div class="col-md-5">
             <div class="form-group">
@@ -46,17 +45,19 @@
     </div>
 </form>
 
-<?= $this->section('javascript'); ?>
 <script>
     $(document).ready(() => {
         $('.formSubmit').submit(function(e) {
             e.preventDefault();
 
             $.ajax({
-                // type: 'post',
+                type: 'post',
                 url: $(this).attr('action'),
                 data: new FormData(this),
                 dataType: 'json',
+                contentType: false,
+                cache: false,
+                processData: false,
                 beforeSend: function() {
                     $('#btnProcess').attr('disabled', 'disabled');
                     $('#btnProcess').html('<i class="fa fa-spin fa-spinner"></i>');
@@ -69,7 +70,6 @@
                             window.location.href = response.error.logout
                         }
 
-
                         if (response.error.company_name) {
                             $('#company_name').addClass('is-invalid');
                             $('#errCompanyName').html(response.error.company_name)
@@ -78,7 +78,6 @@
                             $('#errCompanyName').html('')
                         }
                     } else {
-                        alert('OK');
                         $('#btnBack').hide()
                         $('#btnEdit').show()
                         getDataProfile();
@@ -91,4 +90,3 @@
         })
     })
 </script>
-<?= $this->endSection(); ?>
