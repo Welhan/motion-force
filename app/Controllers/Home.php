@@ -2,6 +2,8 @@
 
 namespace App\Controllers;
 
+use App\Models\UserModel;
+
 class Home extends BaseController
 {
     // Starter Template Controller
@@ -10,8 +12,19 @@ class Home extends BaseController
     //     return view('welcome_message');
     // }
 
+    protected $userModel;
+
+    public function __construct()
+    {
+        $this->userModel = new UserModel();
+    }
+
     public function index()
     {
-        return view('fe_home/index');
+        $company = $this->userModel->find(1);
+        $data = [
+            'company' => $company
+        ];
+        return view('fe_home/index', $data);
     }
 }

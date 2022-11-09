@@ -764,25 +764,25 @@
                     <div class="info-item d-flex"> <i class="bi bi-envelope flex-shrink-0"></i>
                         <div>
                             <h4>Email:</h4>
-                            <p><a href="mailto://welhan.susanto@gmail.com">info@motionforce.sahabatdigital.id</a></p>
+                            <p><a href="mailto://<?= $company->email; ?>"><?= $company->email; ?></a></p>
                         </div>
                     </div>
                     <div class="info-item d-flex mt-3"> <i class="bi bi-wechat flex-shrink-0"></i>
                         <div>
                             <h4>Wechat:</h4>
-                            <p>MotionForce_HK</p>
+                            <p><?= $company->wechat; ?></p>
                         </div>
                     </div>
                     <div class="info-item d-flex"> <i class="bi bi-whatsapp flex-shrink-0"></i>
                         <div>
                             <h4>WhatsApp:</h4>
-                            <p><a href="https://wa.me/+6282390402789" target="_blank">+62 823 9040 2789</a></p>
+                            <p><a href="https://wa.me/<?= $company->whatsapp; ?>" target="_blank"><?= $company->whatsapp; ?></a></p>
                         </div>
                     </div>
                     <div class="info-item d-flex"> <i class="bi bi-phone flex-shrink-0"></i>
                         <div>
                             <h4>Phone:</h4>
-                            <p>(+852) 2650 8580</p>
+                            <p><?= $company->phone; ?></p>
                         </div>
                     </div>
                 </div>

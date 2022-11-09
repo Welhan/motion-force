@@ -9,5 +9,5 @@ class NewsModel extends Model
     protected $table = 'news';
     protected $primaryKey = 'id';
     protected $returnType = 'object';
-    protected $allowedFields = [];
+    protected $allowedFields = ['title', 'image', 'description', 'tag', 'date_added', 'active'];
 }

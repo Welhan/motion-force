@@ -8,7 +8,7 @@
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <form action="" method="post" class="formSubmit">
+            <form action="" method="post" class="formSubmit" enctype="multipart/form-data">
                 <?= csrf_field(); ?>
                 <div class="modal-body">
                     <div class="form-group">
@@ -46,9 +46,7 @@
     CKEDITOR.replace('news', {
         removeButtons: 'Specialchar,PasteFromWord,Table,Image,Anchor,ShowBlocks'
         // Strike,Subscript,Superscript,
-    })
-
-    $('#cke_51_label').hide();
+    });
 
     $(document).ready(() => {
         $('.formSubmit').submit(function(e) {
@@ -57,8 +55,11 @@
             $.ajax({
                 type: 'post',
                 url: $(this).attr('action'),
-                data: $(this).serialize(),
+                data: new FormData(this),
                 dataType: 'json',
+                contentType: false,
+                cache: false,
+                processData: false,
                 beforeSend: function() {
                     $('#btnProcess').attr('disabled', 'disabled');
                     $('#btnProcess').html('<i class="fa fa-spin fa-spinner"></i>');
@@ -80,7 +81,7 @@
                         }
                     } else {
                         $('#modal-new').modal('hide');
-                        // getDataCategory();
+                        getDataNews();
                     }
                 },
                 error: function(xhr, ajaxOptions, thrownError) {
