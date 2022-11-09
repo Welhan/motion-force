@@ -22,6 +22,9 @@
             foreach ($news as $new) : ?>
                 <tr class="text-center h5">
                     <td><?= $no++; ?></td>
+                    <td><?= ucwords($new->title); ?></td>
+                    <td><?= date('d-m-Y', strtotime($new->date_added)); ?></td>
+                    <td><?= ($new->active == 1) ? 'Active' : 'Not Active'; ?></td>
                 </tr>
             <?php endforeach; ?>
         </tbody>

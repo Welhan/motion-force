@@ -8,7 +8,7 @@
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <form action="" method="post" class="formSubmit" enctype="multipart/form-data">
+            <form action="news" method="post" class="formSubmit" enctype="multipart/form-data">
                 <?= csrf_field(); ?>
                 <div class="modal-body">
                     <div class="form-group">
@@ -18,12 +18,12 @@
                     </div>
                     <div class="form-group">
                         <label for="news">Description</label>
-                        <textarea name="news" id="news" cols="30" rows="10" class="form-control"></textarea>
+                        <textarea name="description" id="description" cols="30" rows="10" class="form-control"></textarea>
                         <div id="errNews" class="invalid-feedback"></div>
                     </div>
                     <div class="form-group">
                         <label for="tags">Tags</label>
-                        <input type="text" class="form-control" id="tags" autocomplete="off" name="tags">
+                        <input type="text" class="form-control" id="tag" autocomplete="off" name="tag">
                         <div id="errTags" class="invalid-feedback"></div>
                     </div>
                     <div class="form-group">

@@ -67,6 +67,7 @@ $routes->post('/saveCompany', 'Company::saveProfile');
 
 // News
 $routes->get('/news', 'News::index');
+$routes->post('/news', 'News::saveNews');
 
 
 
