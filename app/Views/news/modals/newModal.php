@@ -1,6 +1,6 @@
 <!-- Modal -->
 <div class="modal fade" id="modal-new" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered modal-lg">
+    <div class="modal-dialog modal-dialog-centered modal-xl">
         <div class="modal-content">
             <div class="modal-header bg-primary text-white">
                 <h5 class="modal-title" id="exampleModalLabel">Create News</h5>
@@ -11,6 +11,17 @@
             <form action="news" method="post" class="formSubmit" enctype="multipart/form-data">
                 <?= csrf_field(); ?>
                 <div class="modal-body">
+                    <div class="row mb-3">
+                        <div class="col-md-6">
+                            <img src="<?= base_url('/img/articles/default.png'); ?>" alt="Article Image" class="img-thumbnail img-preview" width="50%">
+                            <div class="custom-file mt-1">
+                                <input type="file" class="custom-file-input" id="pic" name="pic" onchange="previewImg()">
+                                <label class="custom-file-label" for="customFile">Choose file<span class="text-danger">*</span></label>
+                            </div>
+
+                        </div>
+                    </div>
+
                     <div class="form-group">
                         <label for="title">Title</label>
                         <input type="text" class="form-control" id="title" autocomplete="off" name="title">
@@ -43,7 +54,7 @@
 </div>
 
 <script>
-    CKEDITOR.replace('news', {
+    CKEDITOR.replace('description', {
         removeButtons: 'Specialchar,PasteFromWord,Table,Image,Anchor,ShowBlocks'
         // Strike,Subscript,Superscript,
     });

@@ -23,8 +23,11 @@
                 <tr class="text-center h5">
                     <td><?= $no++; ?></td>
                     <td><?= ucwords($new->title); ?></td>
-                    <td><?= date('d-m-Y', strtotime($new->date_added)); ?></td>
-                    <td><?= ($new->active == 1) ? 'Active' : 'Not Active'; ?></td>
+                    <td><i class="fas fa-calendar-o"></i> <?= date_format(date_create($new->date_added), 'M d,Y'); ?></td>
+                    <td>
+                        <button class="btn btn-sm <?= ($new->active == 1) ? "btn-success" : "btn-danger"; ?> rounded-pill text-white" role="button" onclick="updateStatus(<?= $new->id; ?>)"><?= ($new->active) ? "Active" : "Not Active"; ?></button>
+                    </td>
+                    <td></td>
                 </tr>
             <?php endforeach; ?>
         </tbody>

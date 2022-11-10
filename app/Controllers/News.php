@@ -41,14 +41,14 @@ class News extends BaseController
                 return;
             }
 
-            $news = $this->newsModel->find();
+            $news = $this->newsModel->orderBy('id', 'desc')->find();
 
             $data = [
                 'news' => $news
             ];
 
             $msg = [
-                'data' => view('news/tableData1', $data)
+                'data' => view('news/tableData', $data)
             ];
 
             echo json_encode($msg);
@@ -90,9 +90,10 @@ class News extends BaseController
             }
 
             $title = htmlspecialchars($this->request->getPost('title'), true);
-            $description = htmlspecialchars($this->request->getPost('description'), true);
+            $description = $this->request->getPost('description');
             $tag = htmlspecialchars($this->request->getPost('tag'), true);
             $active = $this->request->getPost('active');
+            $pic = $this->request->getFile('pic');
 
             // Start Validation
             $validation = \Config\Services::validation();
@@ -129,8 +130,16 @@ class News extends BaseController
                 return;
             }
 
+            if (!$pic) {
+                $image = '';
+            } else {
+                $image = $pic->getName();
+                $pic->move('img/articles/');
+            }
+
             $data = [
                 'title' => $title,
+                'image' => $image,
                 'description' => $description,
                 'tag' => $tag,
                 'date_added' => date('Y-m-d'),
@@ -140,7 +149,7 @@ class News extends BaseController
             try {
                 if ($this->newsModel->save($data)) {
                     $alert = [
-                        'message' => "News: $title Created",
+                        'message' => "News: $title Saved",
                         'alert' => 'alert-success'
                     ];
 
@@ -148,7 +157,7 @@ class News extends BaseController
                 }
             } catch (Exception $e) {
                 $alert = [
-                    'message' => "News: $title Not Created<br> " . $e->getMessage(),
+                    'message' => "News: $title Not Saved<br> " . $e->getMessage(),
                     'alert' => 'alert-danger'
                 ];
 
